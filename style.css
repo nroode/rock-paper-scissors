@@ -1,0 +1,19 @@
+body {
+    background: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+.title-score {
+    border: 1px solid black;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.game-choice {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: white;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
