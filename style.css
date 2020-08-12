@@ -1,19 +1,106 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
 body {
     background: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding-top: 50px;
+    height: 100vh;
 }
 
 .title-score {
-    border: 1px solid black;
+    border: 2px solid hsl(217, 16%, 45%);
     border-radius: 30px;
     padding: 20px;
+    margin: 0px auto;
+    max-width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 100px;
 }
 
-.game-choice {
-    width: 150px;
-    height: 150px;
+h1 {
+    text-transform: uppercase;
+    color: white;
+    max-width: 140px;
+    font-size: 34px;
+    line-height: 30px;
+}
+
+.score-background {
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.score-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: hsl(229, 64%, 46%);
+}
+
+.points {
+    font-size: 50px;
+    line-height: 46px;
+    color: hsl(229, 25%, 31%);
+    
+}
+
+.game-choices {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+.game-choices__connector {
+    height: 200px;
+    width: 200px;
+    background-color: grey;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+.game-choice__inner {
+    width: 120px;
+    height: 120px;
     border-radius: 100%;
     background-color: white;
     display: grid;
     align-items: center;
+    justify-items: center;
+    box-shadow: inset 1px 6px 0px rgb(201, 210, 212);
+}
+
+.game-choice {
+    border-radius: 100%;
+    width: 160px;
+    height: 160px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    margin: 10px;
+}
+
+.game-choice.rock {
+    background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+    box-shadow: 1px 6px 0px hsl(349, 70%, 40%);
+}
+
+.game-choice.paper {
+    background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+    box-shadow: 1px 6px 0px hsl(230, 61%, 50%);
+}
+
+.game-choice.scissors {
+    background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+    box-shadow: 1px 6px 0px hsl(40, 83%, 40%);
+}
+
+.game-selections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
