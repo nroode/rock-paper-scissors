@@ -104,3 +104,9 @@ h1 {
     grid-template-columns: 1fr 1fr;
     justify-items: center;
 }
+
+.game-selections_subhed {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
