@@ -17,7 +17,7 @@ body {
     border-radius: 15px;
     padding: 20px;
     margin: 5vh auto;
-    max-width: 600px;
+    max-width: 500px;
     display: grid;
     grid-template-columns: 1fr 100px;
 }
@@ -26,8 +26,8 @@ h1 {
     text-transform: uppercase;
     color: white;
     max-width: 140px;
-    font-size: 34px;
-    line-height: 30px;
+    font-size: 30px;
+    line-height: 26px;
 }
 
 .score-background {
@@ -53,22 +53,21 @@ h1 {
 
 .game-view-container {
     display: grid;
-    max-width: 500px;
     justify-items: center;
-    align-items: center;
+    align-items: center; 
+    max-width: 500px;
     margin: 0px auto;
     /* background: url('./images/bg-triangle.svg');
     background-repeat: no-repeat; */
 }
 
-.game-view,
+
 .background-triangle {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
-}
-
-.background-triangle {
     width: 250px;
+    position: relative;
+    z-index: -1;
 }
 
 .game-choices {
@@ -77,7 +76,8 @@ h1 {
     justify-items: center;
     grid-row-gap: 10px;
     grid-column-gap: 60px;
-
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
 }
 
 .game-choices .rock {
@@ -107,6 +107,15 @@ h1 {
     margin: 10px;
 }
 
+.placeholder-pick {
+    background-color: hsla(231, 48%, 14%, 0.836);
+    border-radius: 100%;
+    width: 160px;
+    height: 160px;
+    margin-top: 85px;
+}
+
+
 .game-choice.rock {
     background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
     box-shadow: 1px 6px 0px hsl(349, 70%, 40%);
@@ -123,34 +132,65 @@ h1 {
 }
 
 .game-selections {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.game-selections .side {
+    margin: 0px 30px;
+}
+
+.game-selections .game-choice__inner {
+    width: 160px;
+    height: 160px;
+}
+
+.game-selections .game-choice__inner img {
+    width: 45%;
+}
+
+.game-selections .game-choice {
+    width: 210px;
+    height: 210px;
+    margin: 10px;
 }
 
 .game-selections_subhed {
     color: white;
     text-transform: uppercase;
     text-align: center;
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin: 30px 0px 60px;
+    font-weight: 600;
+}
+
+.game-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .game-result-title {
     text-align: center;
     color: white;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
 }
 
 .rules {
     border: 2px solid hsl(217, 16%, 45%);
-    border-radius: 10px;
-    padding: 10px 40px;
+    border-radius: 8px;
+    padding: 8px 35px;
     text-transform: uppercase;
     color: white;
     background-color: transparent;
     font-family: 'Barlow Semi Condensed', sans-serif;
-    letter-spacing: 1px;
-    font-size: 16px;
+    letter-spacing: 2px;
+    font-size: 14px;
     position: absolute;
     right: 30px;
     bottom: 30px;
@@ -188,7 +228,7 @@ h1 {
     }
 
     .title-score {
-        margin: 4vh;
+        margin: 4vh 4vh 0px;
     }
 
     .score-background {
@@ -237,6 +277,32 @@ h1 {
         left: 0;
         max-width: 130px;
         margin: 0px auto 30px;
+    }
+
+    .game-selections .side {
+        margin: 0px 10px;
+        display: grid;
+    }
+    
+    .game-selections .game-choice__inner {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .game-selections .game-choice__inner img {
+        width: 45%;
+    }
+    
+    .game-selections .game-choice {
+        width: 130px;
+        height: 130px;
+        margin: 10px;
+    }
+
+    .game-selections_subhed {
+        font-size: 14px;
+        margin: 18px 0px 0px;
+        grid-row: 2 / 3;
     }
 
 

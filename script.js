@@ -11,6 +11,8 @@ let winner;
 const gameData = ['rock', 'paper', 'scissors'];
 
 const gameChoices = `
+<div class="game-view-container">
+<img src="./images/bg-triangle.svg" class="background-triangle" />
 <div class="game-choices">
 ${gameData.map((option, i) => {
     return `<div class="game-choice ${option}" id="${i}">
@@ -19,6 +21,7 @@ ${gameData.map((option, i) => {
     </div>
   </div>`
 }).join('')}
+</div>
 </div>
 `;
 
@@ -65,23 +68,19 @@ const renderGameSelections = (humanPickUI) => {
             <div class="pick-human">
                 ${humanPickUI.outerHTML}
             </div>
-            
         </div>
-
         <div class="side side-right">
             <h4 class="game-selections_subhed">The House Picked</h4>
             <div class="pick-computer">
+                <div class="placeholder-pick"></div>
             </div>
-        </div>
-
-        <div class="game-result">
-            <h2 class="game-result-title">You Win/You Lose</h2>
-            <button class="btn-restart">Play Again</button>
         </div>
     </div>
       `;
       gameView.insertAdjacentHTML("beforeend",  gameSelections);
-      computerSelection();
+      
+      setTimeout(computerSelection, 1000);
+      
 
 };
 
@@ -100,10 +99,11 @@ const computerSelection = () => {
     `;
 
     const computerContainer = document.querySelector('.pick-computer');
-    computerContainer.insertAdjacentHTML('beforeend', computerPickUI);
+    computerContainer.innerHTML = computerPickUI;
 
     console.log(computerPickUI);
-    decideWinner();
+    setTimeout(decideWinner, 1000);
+    ;
 
 }
 
@@ -124,11 +124,21 @@ const decideWinner = () => {
             winner = 'you win';
         } else {
             playerScore > 0 ? playerScore-- : playerScore;
-            winner = 'house wins';
+            winner = 'you lose';
         }
 
-        let winnerTxt = document.querySelector('.game-result-title');
-        winnerTxt.textContent = winner;
+        let resultUI = `
+        <div class="game-result">
+        <h2 class="game-result-title">${winner}</h2>
+        <button class="btn-restart">Play Again</button>
+        </div>`;
+
+        let humanSelect = document.querySelector('.side-left');
+
+        humanSelect.insertAdjacentHTML('afterend', resultUI);
+
+        // let winnerTxt = document.querySelector('.game-result-title');
+        // winnerTxt.textContent = winner;
         console.log(winner);
 
         pointsUI.textContent = playerScore;
