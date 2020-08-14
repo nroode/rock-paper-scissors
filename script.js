@@ -109,6 +109,8 @@ const computerSelection = () => {
 
 const decideWinner = () => {
 
+        console.log(humanPick, computerPick);
+
         if (humanPick === computerPick) {
             winner = 'draw';
         } else if (humanPick === 0 && computerPick === 2) {
@@ -121,6 +123,7 @@ const decideWinner = () => {
             playerScore++;
             winner = 'you win';
         } else {
+            playerScore > 0 ? playerScore-- : playerScore;
             winner = 'house wins';
         }
 
@@ -152,41 +155,36 @@ const updateScore = () => {
 };
 
 const displayHumanSelection = (e) => {
-  console.log(e.target.id);
+//   console.log(e.target.id);
 
   if (e.target.closest(".game-choice")) {
-    humanPick = Number(e.target.id);
-    let humanPickUI = e.target.closest(".game-choice");
+    
+    // console.log(e.target.closest(".game-choice"));
 
-    console.log(humanPickUI);
+    
+
+    let humanPickUI = e.target.closest(".game-choice");
+    // console.log(humanPickUI);
+
+    humanPick = Number(humanPickUI.id);
+    // console.log(humanPickUI.id);
+
+    // console.log(humanPickUI);
 
     gameView.innerHTML = "";
     renderGameSelections(humanPickUI);
 
     // gameView.insertAdjacentHTML("beforeend", renderGameSelections);
 
-    if (e.target.closest(".rock")) {
-      console.log("rock picked");
-    }
   }
 };
 
-//display computer selection & whether won/lost
-//assign points
 
 window.onload = () => {
   resetGame();
 };
 
-//reset the game
 
-//render the options UI
-
-//render the human selection UI
-
-//computer randomly picks number & both selections render UI
-
-//determine whether human wins or loses
 
 gameView.addEventListener("click", displayHumanSelection);
 gameView.addEventListener("click", function(e) {
