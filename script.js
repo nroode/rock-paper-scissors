@@ -5,6 +5,8 @@ const pointsUI = document.querySelector(".points");
 let playerScore = 0;
 let humanPick;
 let computerPick;
+let winner;
+
 
 const gameData = ['rock', 'paper', 'scissors'];
 
@@ -73,7 +75,7 @@ const renderGameSelections = (humanPickUI) => {
         </div>
 
         <div class="game-result">
-            <h2>You Win/You Lose</h2>
+            <h2 class="game-result-title">You Win/You Lose</h2>
             <button class="btn-restart">Play Again</button>
         </div>
     </div>
@@ -101,12 +103,40 @@ const computerSelection = () => {
     computerContainer.insertAdjacentHTML('beforeend', computerPickUI);
 
     console.log(computerPickUI);
+    decideWinner();
+
+}
+
+const decideWinner = () => {
+
+        if (humanPick === computerPick) {
+            winner = 'draw';
+        } else if (humanPick === 0 && computerPick === 2) {
+            playerScore++;
+            winner = 'you win';
+        } else if (humanPick === 1 && computerPick === 0) {
+            playerScore++;
+            winner = 'you win';
+        } else if (humanPick === 2 && computerPick === 1) {
+            playerScore++;
+            winner = 'you win';
+        } else {
+            winner = 'house wins';
+        }
+
+        let winnerTxt = document.querySelector('.game-result-title');
+        winnerTxt.textContent = winner;
+        console.log(winner);
+
+        pointsUI.textContent = playerScore;
+
+
 }
 
 const resetGame = () => {
 gameView.innerHTML = "";
   //reset the score to 0
-  playerScore = 0;
+  
   updateScore();
   renderGameOptions();
 };
@@ -125,6 +155,7 @@ const displayHumanSelection = (e) => {
   console.log(e.target.id);
 
   if (e.target.closest(".game-choice")) {
+    humanPick = Number(e.target.id);
     let humanPickUI = e.target.closest(".game-choice");
 
     console.log(humanPickUI);
