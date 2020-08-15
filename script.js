@@ -79,7 +79,7 @@ const renderGameSelections = (humanPickUI) => {
       `;
       gameView.insertAdjacentHTML("beforeend",  gameSelections);
       
-      setTimeout(computerSelection, 1000);
+    //   setTimeout(computerSelection, 1000);
       
 
 };
@@ -103,7 +103,7 @@ const computerSelection = () => {
 
     console.log(computerPickUI);
     setTimeout(decideWinner, 1000);
-    ;
+    
 
 }
 

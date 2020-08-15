@@ -48,7 +48,7 @@ h1 {
     font-size: 50px;
     line-height: 46px;
     color: hsl(229, 25%, 31%);
-    
+    font-weight: 700;
 }
 
 .game-view-container {
@@ -175,10 +175,27 @@ h1 {
     text-align: center;
     color: white;
     text-transform: uppercase;
-    font-size: 34px;
+    font-size: 40px;
     font-weight: 600;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.btn-restart {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: hsl(231, 47%, 14%);
+}
+
+.btn-restart:hover {
+    cursor: pointer;
+    color: hsl(349, 71%, 52%);
 }
 
 .rules {
@@ -282,6 +299,9 @@ h1 {
     .game-selections .side {
         margin: 0px 10px;
         display: grid;
+        align-items: center;
+        justify-items: center;
+        grid-template-rows: 130px 1fr;
     }
     
     .game-selections .game-choice__inner {
@@ -305,6 +325,13 @@ h1 {
         grid-row: 2 / 3;
     }
 
+    .placeholder-pick {
+        background-color: hsla(231, 48%, 14%, 0.836);
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+        margin-top: 5px;
+    }
 
     
 }
