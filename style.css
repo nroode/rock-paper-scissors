@@ -107,6 +107,10 @@ h1 {
     margin: 10px;
 }
 
+.game-choice:hover {
+    cursor: pointer;
+}
+
 .placeholder-pick {
     background-color: hsla(231, 48%, 14%, 0.836);
     border-radius: 100%;

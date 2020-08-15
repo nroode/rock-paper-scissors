@@ -6,25 +6,26 @@ let playerScore = 0;
 let humanPick;
 let computerPick;
 let winner;
+let isHumanTurn = true;
 
-
-const gameData = ['rock', 'paper', 'scissors'];
+const gameData = ["rock", "paper", "scissors"];
 
 const gameChoices = `
 <div class="game-view-container">
 <img src="./images/bg-triangle.svg" class="background-triangle" />
 <div class="game-choices">
-${gameData.map((option, i) => {
+${gameData
+  .map((option, i) => {
     return `<div class="game-choice ${option}" id="${i}">
     <div class="game-choice__inner">
       <img src="./images/icon-${option}.svg" alt="${option}" />
     </div>
-  </div>`
-}).join('')}
+  </div>`;
+  })
+  .join("")}
 </div>
 </div>
 `;
-
 
 // const gameSelections = `
 // <div class="game-selections">
@@ -57,11 +58,9 @@ ${gameData.map((option, i) => {
 //       </div>
 // `;
 
-
-const renderGameSelections = (humanPickUI) => { 
-    // humanPick = humanPick.outerHTML;
-    let gameSelections =  
-    `
+const renderGameSelections = (humanPickUI) => {
+  // humanPick = humanPick.outerHTML;
+  let gameSelections = `
     <div class="game-selections">
         <div class="side side-left">
             <h4 class="game-selections_subhed">You Picked</h4>
@@ -77,20 +76,19 @@ const renderGameSelections = (humanPickUI) => {
         </div>
     </div>
       `;
-      gameView.insertAdjacentHTML("beforeend",  gameSelections);
-      
-    //   setTimeout(computerSelection, 1000);
-      
 
+  gameView.insertAdjacentHTML("beforeend", gameSelections);
+
+  setTimeout(computerSelection, 1000);
 };
 
 const computerSelection = () => {
-    //randomly pick a number 
+  //randomly pick a number
 
-    computerPick = Math.floor(Math.random() * 3);
-    console.log(computerPick);
+  computerPick = Math.floor(Math.random() * 3);
+//   console.log(computerPick);
 
-    const computerPickUI = `
+  const computerPickUI = `
     <div class="game-choice ${gameData[computerPick]}" id="${computerPick}">
         <div class="game-choice__inner">
         <img src="./images/icon-${gameData[computerPick]}.svg" alt="${gameData[computerPick]}" />
@@ -98,60 +96,54 @@ const computerSelection = () => {
     </div>
     `;
 
-    const computerContainer = document.querySelector('.pick-computer');
-    computerContainer.innerHTML = computerPickUI;
+  const computerContainer = document.querySelector(".pick-computer");
+  computerContainer.innerHTML = computerPickUI;
 
-    console.log(computerPickUI);
-    setTimeout(decideWinner, 1000);
-    
-
-}
+//   console.log(computerPickUI);
+  setTimeout(decideWinner, 1000);
+};
 
 const decideWinner = () => {
+//   console.log(humanPick, computerPick);
 
-        console.log(humanPick, computerPick);
+  if (humanPick === computerPick) {
+    winner = "draw";
+  } else if (humanPick === 0 && computerPick === 2) {
+    playerScore++;
+    winner = "you win";
+  } else if (humanPick === 1 && computerPick === 0) {
+    playerScore++;
+    winner = "you win";
+  } else if (humanPick === 2 && computerPick === 1) {
+    playerScore++;
+    winner = "you win";
+  } else {
+    playerScore > 0 ? playerScore-- : playerScore;
+    winner = "you lose";
+  }
 
-        if (humanPick === computerPick) {
-            winner = 'draw';
-        } else if (humanPick === 0 && computerPick === 2) {
-            playerScore++;
-            winner = 'you win';
-        } else if (humanPick === 1 && computerPick === 0) {
-            playerScore++;
-            winner = 'you win';
-        } else if (humanPick === 2 && computerPick === 1) {
-            playerScore++;
-            winner = 'you win';
-        } else {
-            playerScore > 0 ? playerScore-- : playerScore;
-            winner = 'you lose';
-        }
-
-        let resultUI = `
+  let resultUI = `
         <div class="game-result">
         <h2 class="game-result-title">${winner}</h2>
         <button class="btn-restart">Play Again</button>
         </div>`;
 
-        let humanSelect = document.querySelector('.side-left');
+  let humanSelect = document.querySelector(".side-left");
 
-        humanSelect.insertAdjacentHTML('afterend', resultUI);
+  humanSelect.insertAdjacentHTML("afterend", resultUI);
 
-        // let winnerTxt = document.querySelector('.game-result-title');
-        // winnerTxt.textContent = winner;
-        console.log(winner);
+  // let winnerTxt = document.querySelector('.game-result-title');
+  // winnerTxt.textContent = winner;
+//   console.log(winner);
 
-        pointsUI.textContent = playerScore;
-
-
-}
+  pointsUI.textContent = playerScore;
+};
 
 const resetGame = () => {
-gameView.innerHTML = "";
-  //reset the score to 0
-  
+  gameView.innerHTML = "";
   updateScore();
   renderGameOptions();
+  isHumanTurn = true;
 };
 
 const renderGameOptions = () => {
@@ -159,46 +151,37 @@ const renderGameOptions = () => {
   gameView.insertAdjacentHTML("beforeend", gameChoices);
 };
 
-
 const updateScore = () => {
   pointsUI.textContent = playerScore;
 };
 
 const displayHumanSelection = (e) => {
-//   console.log(e.target.id);
+  //   console.log(e.target.id);
+  if (isHumanTurn) {
+    if (e.target.closest(".game-choice")) {
+      let humanPickUI = e.target.closest(".game-choice");
+      // console.log(humanPickUI);
 
-  if (e.target.closest(".game-choice")) {
-    
-    // console.log(e.target.closest(".game-choice"));
+      humanPick = Number(humanPickUI.id);
+      // console.log(humanPickUI.id);
 
-    
+      console.log(humanPickUI);
 
-    let humanPickUI = e.target.closest(".game-choice");
-    // console.log(humanPickUI);
-
-    humanPick = Number(humanPickUI.id);
-    // console.log(humanPickUI.id);
-
-    // console.log(humanPickUI);
-
-    gameView.innerHTML = "";
-    renderGameSelections(humanPickUI);
-
-    // gameView.insertAdjacentHTML("beforeend", renderGameSelections);
-
+      gameView.innerHTML = "";
+      renderGameSelections(humanPickUI);
+      isHumanTurn = false;
+      // gameView.insertAdjacentHTML("beforeend", renderGameSelections);
+    }
   }
 };
-
 
 window.onload = () => {
   resetGame();
 };
 
-
-
 gameView.addEventListener("click", displayHumanSelection);
-gameView.addEventListener("click", function(e) {
-    if (e.target.closest('.btn-restart')){
-        resetGame();
-    }
-} );
+gameView.addEventListener("click", function (e) {
+  if (e.target.closest(".btn-restart")) {
+    resetGame();
+  }
+});
