@@ -2,6 +2,9 @@ const gameView = document.querySelector(".game-view");
 const gameChoicesGroup = document.querySelector(".game-choices");
 const pointsUI = document.querySelector(".points");
 const gameData = ["rock", "paper", "scissors"];
+const rulesModalBackground = document.querySelector(".rules-modal-background");
+const rulesBtn = document.querySelector(".rules");
+const closeModalBtn = document.querySelector(".modal-close-btn");
 let playerScore;
 let humanPick;
 let computerPick;
@@ -135,9 +138,25 @@ const decideWinner = () => {
   console.log(localStorage.getItem("score"));
 };
 
+function closeModal() {
+    rulesModalBackground.style.display = 'none';
+}
+
 gameView.addEventListener("click", displayHumanSelection);
 gameView.addEventListener("click", function (e) {
   if (e.target.closest(".btn-restart")) {
     resetGame();
   }
 });
+
+rulesBtn.addEventListener("click", function() {
+    rulesModalBackground.style.display = 'block';
+});
+
+closeModalBtn.addEventListener("click", closeModal);
+rulesModalBackground.addEventListener("click", function(e){
+    console.log(e.target);
+    if (e.target.matches(".rules-modal-background")) {
+        closeModal();
+    }
+})
