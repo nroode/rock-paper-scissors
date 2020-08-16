@@ -8,7 +8,6 @@ let computerPick;
 let winner;
 let isHumanTurn = true;
 
-
 const gameChoices = `
 <div class="game-view-container">
 <img src="./images/bg-triangle.svg" class="background-triangle" />
@@ -50,12 +49,10 @@ const renderGameSelections = (humanPickUI) => {
 };
 
 window.onload = () => {
-    console.log(localStorage.getItem('score'));
-    if (localStorage.getItem('score')) {
-        playerScore = localStorage.getItem('score');
-    } else {
-        playerScore = 0;
-    }
+  console.log(localStorage.getItem("score"));
+  localStorage.getItem("score")
+    ? (playerScore = JSON.parse(localStorage.getItem("score")))
+    : (playerScore = 0);
   resetGame();
 };
 
@@ -134,8 +131,8 @@ const decideWinner = () => {
   let humanSelect = document.querySelector(".side-left");
   humanSelect.insertAdjacentHTML("afterend", resultUI);
   pointsUI.textContent = playerScore;
-  localStorage.setItem('score', playerScore);
-  console.log(localStorage.getItem('score'));
+  localStorage.setItem("score", playerScore);
+  console.log(localStorage.getItem("score"));
 };
 
 gameView.addEventListener("click", displayHumanSelection);
