@@ -183,6 +183,7 @@ h1 {
 .game-result div {
     grid-row: 2 / 3;
     align-self: center;
+    text-align: center;
 }
 
 
@@ -206,6 +207,7 @@ h1 {
     font-weight: 600;
     letter-spacing: 2px;
     color: hsl(231, 47%, 14%);
+    
 }
 
 .btn-restart:hover {

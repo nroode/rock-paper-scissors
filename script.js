@@ -8,6 +8,7 @@ let computerPick;
 let winner;
 let isHumanTurn = true;
 
+
 const gameChoices = `
 <div class="game-view-container">
 <img src="./images/bg-triangle.svg" class="background-triangle" />
@@ -65,6 +66,7 @@ const renderGameOptions = () => {
 
 const updateScore = () => {
   pointsUI.textContent = playerScore;
+  
 };
 
 const displayHumanSelection = (e) => {
