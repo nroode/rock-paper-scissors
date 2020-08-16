@@ -2,7 +2,7 @@ const gameView = document.querySelector(".game-view");
 const gameChoicesGroup = document.querySelector(".game-choices");
 const pointsUI = document.querySelector(".points");
 const gameData = ["rock", "paper", "scissors"];
-let playerScore = 0;
+let playerScore;
 let humanPick;
 let computerPick;
 let winner;
@@ -50,6 +50,12 @@ const renderGameSelections = (humanPickUI) => {
 };
 
 window.onload = () => {
+    console.log(localStorage.getItem('score'));
+    if (localStorage.getItem('score')) {
+        playerScore = localStorage.getItem('score');
+    } else {
+        playerScore = 0;
+    }
   resetGame();
 };
 
@@ -66,7 +72,6 @@ const renderGameOptions = () => {
 
 const updateScore = () => {
   pointsUI.textContent = playerScore;
-  
 };
 
 const displayHumanSelection = (e) => {
@@ -129,6 +134,8 @@ const decideWinner = () => {
   let humanSelect = document.querySelector(".side-left");
   humanSelect.insertAdjacentHTML("afterend", resultUI);
   pointsUI.textContent = playerScore;
+  localStorage.setItem('score', playerScore);
+  console.log(localStorage.getItem('score'));
 };
 
 gameView.addEventListener("click", displayHumanSelection);
