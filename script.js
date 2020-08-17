@@ -52,6 +52,7 @@ const renderGameSelections = (humanPickUI) => {
 };
 
 window.onload = () => {
+
   console.log(localStorage.getItem("score"));
   localStorage.getItem("score")
     ? (playerScore = JSON.parse(localStorage.getItem("score")))
