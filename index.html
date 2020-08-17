@@ -15,7 +15,6 @@
       href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@300;600;700&display=swap"
       rel="stylesheet"
     />
-    <script src="https://kit.fontawesome.com/14dc691331.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style.css" />
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
   </head>
@@ -27,8 +26,7 @@
         <div class="points"></div>
       </div>
     </div>
-      <div class="game-view">
-      </div>
+    <div class="game-view"></div>
     <button class="rules">Rules</button>
 
     <div class="attribution">
@@ -40,24 +38,10 @@
     <div class="rules-modal-background hidden">
       <div class="rules-modal">
         <h2 class="rules-modal-title">RULES</h2>
-        <div>
-          <div class="game-choice rock">
-            <div class="game-choice__inner">
-              <img src="./images/icon-rock.svg" alt="rock" />
-            </div>
-          </div>
-          <div class="game-choice paper">
-            <div class="game-choice__inner">
-              <img src="./images/icon-paper.svg" alt="paper" />
-            </div>
-          </div>
-          <div class="game-choice scissors">
-            <div class="game-choice__inner">
-              <img src="./images/icon-scissors.svg" alt="scissors" />
-            </div>
-          </div>
+        <div class="modal-choices">
+          <img src="./images/image-rules.svg" />
         </div>
-        <div class="modal-close-btn"><i class="fas fa-times"></i></div>
+        <div class="modal-close-btn"><img src="./images/icon-close.svg"></div>
       </div>
     </div>
     <script src="./script.js"></script>
